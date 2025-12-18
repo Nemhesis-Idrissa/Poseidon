@@ -1,0 +1,24 @@
+# ninja log v6
+23	96	7877108204642985	app/AegisSecurity_autogen/timestamp	aa48209cf6a9e57e
+23	127	7877005075486239	Aegis_autogen/timestamp	737cc7816935bd82
+23	127	7877005075486239	Aegis_autogen/mocs_compilation.cpp	737cc7816935bd82
+23	127	7877005075486239	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Aegis_autogen/timestamp	737cc7816935bd82
+23	127	7877005075486239	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Aegis_autogen/mocs_compilation.cpp	737cc7816935bd82
+23	119	7877106953918268	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/AegisUI_autogen/timestamp	61f981db21a52069
+628	3196	7876949802464499	CMakeFiles/Aegis.dir/mainwindow.cpp.obj	e343ab93cc8914ce
+618	655	7876994702031636	CMakeFiles/Aegis.dir/main.cpp.obj	8677efb3c7447e57
+615	2838	7876994702001633	CMakeFiles/Aegis.dir/Aegis_autogen/mocs_compilation.cpp.obj	7c9f109cd94e835d
+23	119	7877106953918268	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/AegisUI_autogen/mocs_compilation.cpp	61f981db21a52069
+18	546	7877138858172919	build.ninja	99236045d98b46c4
+597	3119	7877010625659617	app/CMakeFiles/AegisSecurity.dir/__/mainwindow.cpp.obj	ce2811c6bace6a5e
+23	96	7877108204642985	app/AegisSecurity_autogen/mocs_compilation.cpp	aa48209cf6a9e57e
+23	96	7877108204642985	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/app/AegisSecurity_autogen/timestamp	aa48209cf6a9e57e
+23	96	7877108204642985	C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/app/AegisSecurity_autogen/mocs_compilation.cpp	aa48209cf6a9e57e
+468	506	7877106958371636	app/CMakeFiles/AegisSecurity.dir/AegisSecurity_autogen/mocs_compilation.cpp.obj	e90622450d89cff3
+471	2623	7877106958401646	app/CMakeFiles/AegisSecurity.dir/main.cpp.obj	4994ee1e900d65c8
+120	343	7877106954893813	libs/ui/libAegisUI.a	bce303520e8f4a5a
+2623	2813	7877106979921728	AegisSecurity.exe	da61be70e117bcfe
+23	119	7877106953918268	libs/ui/AegisUI_autogen/timestamp	61f981db21a52069
+23	119	7877106953918268	libs/ui/AegisUI_autogen/mocs_compilation.cpp	61f981db21a52069
+652	2956	7877092091360697	libs/ui/CMakeFiles/AegisUI.dir/AegisUI_autogen/mocs_compilation.cpp.obj	1bc63b6c7e8c3a57
+136	2435	7877093470539088	libs/ui/CMakeFiles/AegisUI.dir/sources/mainwindow.cpp.obj	96e9c720d35dd54a
