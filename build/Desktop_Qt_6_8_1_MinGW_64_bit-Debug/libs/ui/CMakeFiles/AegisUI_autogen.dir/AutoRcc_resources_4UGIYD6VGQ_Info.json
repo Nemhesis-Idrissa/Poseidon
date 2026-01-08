@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/AegisUI_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/idris/Desktop/Documents/Aegis/libs/ui",
+	"CMAKE_SOURCE_DIR" : "C:/Users/idris/Desktop/Documents/Aegis",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/AegisUI_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/idris/Desktop/Documents/Aegis/libs/ui/images/login_background.png",
+		"C:/Users/idris/Desktop/Documents/Aegis/libs/ui/images/AEGIS_LOGO.png"
+	],
+	"LOCK_FILE" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/CMakeFiles/AegisUI_autogen.dir/AutoRcc_resources_4UGIYD6VGQ_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "4UGIYD6VGQ",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "D:/Qt/6.8.1/mingw_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/libs/ui/CMakeFiles/AegisUI_autogen.dir/AutoRcc_resources_4UGIYD6VGQ_Used.txt",
+	"SOURCE" : "C:/Users/idris/Desktop/Documents/Aegis/libs/ui/images/resources.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

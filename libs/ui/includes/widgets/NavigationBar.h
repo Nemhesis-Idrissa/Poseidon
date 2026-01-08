@@ -11,17 +11,32 @@ class NavigationBar : public QWidget{
     Q_OBJECT
 public:
     explicit NavigationBar(QWidget* parent = nullptr);
+
+    // Methods to enable/disable buttons from outside
+    void setBackEnabled(bool enabled);
+    void setForwardEnabled(bool enabled);
 signals:
-    void homeCliked(void);
+    void homeClicked(void);
     void searchClicked(void);
-    void alertsCliked(void);
+    void alertsClicked(void);
     void settingsClicked(void);
+    void backClicked(void);
+    void forwardClicked(void);
+
+
 
 private:
-    QPushButton* homeButton;
-    QPushButton* searchButton;
-    QPushButton* alrtsButton;
-    QPushButton* settingsButtong;
+
+    void setupUI(void);
+
+    QPushButton* m_homeButton{nullptr};
+    QPushButton* m_searchButton{nullptr};
+    QPushButton* m_alertButton{nullptr};
+    QPushButton* m_settingsButton{nullptr};
+    QHBoxLayout* m_layout{nullptr};
+
+    QPushButton* m_backButton{nullptr};
+    QPushButton* m_forwardButton{nullptr};
 };
 
 

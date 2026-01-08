@@ -1,0 +1,228 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "design",
+					"jsonFile" : "directory-design-Debug-a0be2114f7317dfb5a1d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "design"
+				},
+				{
+					"build" : "app",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-app-Debug-4763d77145ba8407dfd5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "app",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"build" : "libs/ui",
+					"jsonFile" : "directory-libs.ui-Debug-d65583bacc7473abb60c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "libs/ui",
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "database",
+					"jsonFile" : "directory-database-Debug-f099828c0e604339a7ed.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "database",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Aegis"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "AegisSecurityApp",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "AegisUI",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "AegisData",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "AegisData::@c44ac6e9bb193d64d56d",
+					"jsonFile" : "target-AegisData-Debug-feb87d991d45026dae24.json",
+					"name" : "AegisData",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "AegisData_autogen::@c44ac6e9bb193d64d56d",
+					"jsonFile" : "target-AegisData_autogen-Debug-aff2c142ea7f33e1a3a2.json",
+					"name" : "AegisData_autogen",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "AegisData_autogen_timestamp_deps::@c44ac6e9bb193d64d56d",
+					"jsonFile" : "target-AegisData_autogen_timestamp_deps-Debug-26a82c61062ef85f6d15.json",
+					"name" : "AegisData_autogen_timestamp_deps",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "AegisSecurity::@5f5a17c01335469806cb",
+					"jsonFile" : "target-AegisSecurity-Debug-3f867c0c305436db3f60.json",
+					"name" : "AegisSecurity",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "AegisSecurity_autogen::@5f5a17c01335469806cb",
+					"jsonFile" : "target-AegisSecurity_autogen-Debug-77d78da311b6af9f4367.json",
+					"name" : "AegisSecurity_autogen",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "AegisSecurity_autogen_timestamp_deps::@5f5a17c01335469806cb",
+					"jsonFile" : "target-AegisSecurity_autogen_timestamp_deps-Debug-f4623ecd2b7e3ab58d43.json",
+					"name" : "AegisSecurity_autogen_timestamp_deps",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "AegisUI::@e7dcc633018364bb2d5a",
+					"jsonFile" : "target-AegisUI-Debug-9e52d3635401bd8f7a50.json",
+					"name" : "AegisUI",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "AegisUI_autogen::@e7dcc633018364bb2d5a",
+					"jsonFile" : "target-AegisUI_autogen-Debug-82f0d8dc33c4b3073b72.json",
+					"name" : "AegisUI_autogen",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "AegisUI_autogen_timestamp_deps::@e7dcc633018364bb2d5a",
+					"jsonFile" : "target-AegisUI_autogen_timestamp_deps-Debug-8942c10d55452dbeb017.json",
+					"name" : "AegisUI_autogen_timestamp_deps",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/idris/Desktop/Documents/Aegis/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/idris/Desktop/Documents/Aegis"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

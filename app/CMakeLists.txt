@@ -5,6 +5,7 @@ project(AegisSecurityApp)
 # ========================================
 set(APP_SOURCES
     main.cpp
+
 )
 
 set(APP_UI
@@ -33,6 +34,9 @@ target_include_directories(AegisSecurity PRIVATE
 target_link_libraries(AegisSecurity PRIVATE
     Qt6::Core
     Qt6::Widgets
+    Qt6::Xml
+    AegisUI
+    AegisData
 )
 
 

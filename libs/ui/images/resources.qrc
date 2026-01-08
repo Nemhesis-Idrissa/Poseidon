@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version='1.0'>
+    <qresource prefix='/images'>
+        <file>AEGIS_LOGO.png</file>
+	<file>login_background.png</file> 
+    </qresource>
+</RCC>

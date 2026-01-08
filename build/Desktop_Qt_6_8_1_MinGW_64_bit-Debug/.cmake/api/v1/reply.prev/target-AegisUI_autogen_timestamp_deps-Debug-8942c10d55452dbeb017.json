@@ -1,0 +1,38 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"libs/ui/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "AegisData::@c44ac6e9bb193d64d56d"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "AegisUI_autogen_timestamp_deps::@e7dcc633018364bb2d5a",
+	"isGeneratorProvided" : true,
+	"name" : "AegisUI_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "libs/ui",
+		"source" : "libs/ui"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}
