@@ -1,5 +1,5 @@
-#ifndef SEARCHPAGE_H
-#define SEARCHPAGE_H
+#ifndef DATASETSPAGE_H
+#define DATASETSPAGE_H
 
 #include <QApplication>
 #include <QWidget>
@@ -8,11 +8,10 @@
 #include <QLabel>
 #include <QPushButton>
 
-
-class Search : public QWidget{
+class Datasets : public QWidget{
     Q_OBJECT;
 public:
-    Search() = default;
+    Datasets() = default;
 };
 
 #endif

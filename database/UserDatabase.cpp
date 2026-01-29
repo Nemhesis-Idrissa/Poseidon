@@ -1,13 +1,43 @@
 #include "UserDatabase.h"
 
+UserDatabase::UserDatabase(){
+    loadFromFile();
+    qDebug() << "Creating demo users...";
+    createDemoUsers();
+    qDebug() << "Demo users count:" << m_users.size();
+
+    for(const auto& key : m_users.keys()) {
+        if(key == "admin" || key == "analyst") {
+            qDebug() << key << m_users[key] << "\n";
+        }
+    }
+}
 
 UserDatabase& UserDatabase::instance(){
     static UserDatabase db;
     return db;
 }
+void UserDatabase::resetDatabase() {
+    qDebug() << getFilePath();
 
+    // Clear all users
+    m_users.clear();
+
+    // Delete the file
+    QFile file(getFilePath());
+    if (file.exists()) {
+        file.remove();
+        qDebug() << "Deleted old database file";
+    }
+
+    // Recreate demo users
+    createDemoUsers();
+
+    qDebug() << "Database reset complete. Users:" << m_users.keys();
+}
 bool UserDatabase::authenticate(const QString& username, const QString& password){
     if(!m_users.contains(username)){return false;}
+
     QJsonObject user = m_users[username].toObject();
     QString storedHash = user["password_hash"].toString();
     QString salt = user["salt"].toString();
@@ -25,6 +55,12 @@ bool UserDatabase::authenticate(const QString& username, const QString& password
 
 bool UserDatabase::registerUser(const QString& username, const QString& password,
                                 const QString& email){
+
+    if(m_users.contains(username)){
+        m_lastError = "Username already exists";
+        return false;
+    }
+
     if(username.isEmpty() || password.isEmpty()){
         m_lastError = "Username and password required";
         return false;
@@ -35,13 +71,10 @@ bool UserDatabase::registerUser(const QString& username, const QString& password
         return false;
     }else if(!password.contains(QRegularExpression("[!,:+]"))){
         m_lastError = "Password must contains special characters(!,:+)";
+        qDebug()<<"Password special characters error:  " <<username;
         return false;
     }
 
-    if(m_users.contains(username)){
-        m_lastError = "Username already exists";
-        return false;
-    }
 
     QString salt = generateSalt();
     QString passwordHash = hashPassword(password, salt);
@@ -56,6 +89,7 @@ bool UserDatabase::registerUser(const QString& username, const QString& password
     user["activities"] = QJsonArray();
     m_users[username] = user;
     saveToFile();
+
     return true;
  }
 
@@ -185,18 +219,12 @@ QString UserDatabase::getAccountCreatedDate(){
 
 }
 
-UserDatabase::UserDatabase(){
-    loadFromFile();
-    if(m_users.isEmpty()){
-        createDemoUsers();
-    }
-}
+
 
 void UserDatabase::createDemoUsers(){
-    registerUser("admin", "admin123", "admin@aegis.local");
-    registerUser("analyst", "analyst123", "analyst@aegis.local");
-    registerUser("demo", "demo", "demo@aegis.local");
-
+    registerUser("admin", "admin123!", "admin@aegis.local");
+    registerUser("analyst", "analyst123!", "analyst@aegis.local");
+    registerUser("demo", "demo123!", "demo@aegis.local");
 }
 
 QString UserDatabase::getFilePath(){
@@ -271,7 +299,7 @@ QString UserDatabase::generateSalt() {
 
 
 QString UserDatabase::hashPassword(const QString &password, const QString &salt){
-    const int iterations{100000};
+    const int iterations{600000};
     auto saltResult = QByteArray::fromBase64Encoding(salt.toUtf8());
 
     if(saltResult.decodingStatus != QByteArray::Base64DecodingStatus::Ok){

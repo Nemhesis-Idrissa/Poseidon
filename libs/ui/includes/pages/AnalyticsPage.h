@@ -1,5 +1,5 @@
-#ifndef SEARCHPAGE_H
-#define SEARCHPAGE_H
+#ifndef ANALYTICSPAGE_H
+#define ANALYTICSPAGE_H
 
 #include <QApplication>
 #include <QWidget>
@@ -8,11 +8,12 @@
 #include <QLabel>
 #include <QPushButton>
 
-
-class Search : public QWidget{
+class Analytics : public QWidget{
     Q_OBJECT;
 public:
-    Search() = default;
+    Analytics() = default;
+    explicit Analytics(QWidget *parent = nullptr);
 };
+
 
 #endif

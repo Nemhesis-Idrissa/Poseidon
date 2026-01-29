@@ -7,25 +7,33 @@ set(CMAKE_AUTORCC ON)
 
 set(HEADERS
     includes/mainwindow.h
-    includes/widgets/NavigationBar.h
+    includes/widgets/TopNavigationBar.h
     includes/widgets/SearchBar.h
     includes/pages/HomePage.h
     includes/pages/SearchPage.h
     includes/pages/LoginScreen.h
+    includes/pages/AnalyticsPage.h
+    includes/pages/DashboardsPage.h
+    includes/pages/DatasetsPage.h
+    includes/pages/ReportsPage.h
 )
-
 
 set(SOURCES
     sources/mainwindow.cpp
-    sources/widgets/NavigationBar.cpp
+    sources/widgets/TopNavigationBar.cpp
     sources/widgets/SearchBar.cpp
     sources/pages/HomePage.cpp
     sources/pages/SearchPage.cpp
     sources/pages/LoginScreen.cpp
-
+    sources/pages/AnalyticsPage.cpp
+    sources/pages/DashboardsPage.cpp
+    sources/pages/DatasetsPage.cpp
+    sources/pages/ReportsPage.cpp
 )
 
-set (RESOURCES images/resources.qrc)
+
+set (RESOURCES images/resources.qrc
+)
 
 # ========================================
 # Create Library

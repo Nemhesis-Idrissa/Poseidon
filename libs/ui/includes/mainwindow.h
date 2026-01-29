@@ -14,6 +14,9 @@
 #include <QApplication>
 #include <QScreen>
 #include <UserDatabase.h>
+#include <includes/widgets/TopNavigationBar.h>
+#include <includes/pages/HomePage.h>
+
 
 class MainWindow : public QMainWindow
 {
@@ -26,7 +29,10 @@ private slots:
 
 private:
     QStackedWidget *m_stackedWidget;
-    LoginPage *m_loginPage;
+    LoginPage *m_loginPage{nullptr};
+    HomePage *m_homePage;
+    void switchToPage(int pageIndex);
+    TopNavBar *m_topNavBar;
     QString getStyleSheet();
 };
 

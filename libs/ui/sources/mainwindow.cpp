@@ -1,33 +1,60 @@
 #include <includes/mainwindow.h>
 
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
-    {
-        setWindowTitle("Aegis Security Platform - Live SIEM");
-        setMinimumSize(1600, 900);
 
-        m_stackedWidget = new QStackedWidget(this);
-        setCentralWidget(m_stackedWidget);
+void MainWindow::switchToPage(int pageIndex) {
+    m_stackedWidget->setCurrentIndex(pageIndex);
+}
+
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
+        setWindowTitle("Aegis Security");
+        setMinimumSize(800, 600);
+
+        QWidget *centralWidget = new QWidget(this);
+        setCentralWidget(centralWidget);
+
+        QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
+        mainLayout -> setContentsMargins(0,0,0,0);
+        mainLayout -> setSpacing(0);
+
 
         m_loginPage = new LoginPage(this);
-        //m_dashboardPage = new DashboardPage(this);
+        m_homePage = new HomePage(this);
 
-        m_stackedWidget->addWidget(m_loginPage);
-        //m_stackedWidget->addWidget(m_dashboardPage);
+        //create top navigation bar
+        m_topNavBar = new TopNavBar(this);
+        mainLayout -> addWidget(m_topNavBar);
+        //Hidding nav bar initialy
+        m_topNavBar -> setVisible(false);
 
-        m_stackedWidget->setCurrentWidget(m_loginPage);
+        //connect navigation signal to page switching
+        connect(m_topNavBar, &TopNavBar::navigationRequested, this, &MainWindow::switchToPage);
 
+
+        m_stackedWidget = new QStackedWidget(this);
+        m_stackedWidget -> setObjectName("MainContent");
+        m_stackedWidget -> addWidget(m_loginPage);
+        m_stackedWidget -> addWidget(m_homePage);
+        mainLayout -> addWidget(m_stackedWidget);
+
+
+        //start with login page
+        m_stackedWidget -> setCurrentWidget(m_loginPage);
         connect(m_loginPage, &LoginPage::loginSuccessful, this, &MainWindow::onLoginSuccess);
-        //connect(m_dashboardPage, &DashboardPage::logoutRequested, this, &MainWindow::onLogout);
 
         setStyleSheet(getStyleSheet());
+
+
+
     }
 
-    void MainWindow::onLoginSuccess(const QString &username){
-        //m_dashboardPage -> updateUsername(username);
-        //m_stackedWidget->setCurrentWidget(m_dashboardPage);
-        qWarning()<<"Connected";
 
+    void MainWindow::onLoginSuccess(const QString &username){
+        m_topNavBar -> setVisible(true);
+        m_stackedWidget -> setCurrentWidget(m_homePage);
+
+        qWarning()<<"Connected";
     }
 
 
@@ -35,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
         UserDatabase::instance().logActivity("Logout", "User logged out");
         UserDatabase::instance().logout();
         m_loginPage->clearFields();
+        m_topNavBar -> setVisible(false);
         m_stackedWidget->setCurrentWidget(m_loginPage);
     }
 
@@ -42,57 +70,74 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //Must come back here
     QString MainWindow::getStyleSheet() {
         return R"(
-            #LoginPage { background-color: #F3F4F6; }
-            #LoginLeftSide { background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e40af, stop:1 #3b82f6); }
-            #LoginLeftSide {
-                        background-image: url(:/images/login_background.png);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                    }
 
-#LoginBrandContainer {
-    /*  Add a dark backdrop */
-    background-color: rgba(10, 25, 41, 0.7);
-    border-left: 4px solid #3498db;
+            #DashboardPage { background-color: #F3F4F6; }
+            #Sidebar { background-color: #1F2937; }
+            #LogoSection { background-color: #111827; }
+            #SidebarLogo { color: #3B82F6; font-size: 32px; }
+            #SidebarBrand { color: #ffffff; font-size: 20px; font-weight: bold; letter-spacing: 2px; }
+            #UserSection { background-color: transparent; }
+            #UserAvatar { background-color: #3B82F6; color: #ffffff; font-size: 20px; border-radius: 20px; padding: 8px; }
+            #UserName { color: #F9FAFB; font-size: 14px; font-weight: 600; }
+            #UserRole { color: #9CA3AF; font-size: 12px; }
+            #SidebarSectionLabel { color: #6B7280; font-size: 11px; font-weight: 700; padding: 10px 20px; letter-spacing: 1px; }
+            #NavItem { background-color: transparent; color: #9CA3AF; border: none; text-align: left; padding: 14px 20px; font-size: 14px; font-weight: 500; }
+            #NavItem:hover { background-color: #374151; color: #F9FAFB; }
+            #NavItemActive { background-color: #3B82F6; color: #ffffff; border: none; border-left: 4px solid #2563EB; text-align: left; padding: 14px 20px; font-size: 14px; font-weight: 600; }
 
-}
+            #ContentArea { background-color: #F3F4F6; }
+            #TopBar { background-color: #ffffff; border-bottom: 1px solid #E5E7EB; }
+            #SearchBar { background-color: #F9FAFB; color: #1F2937; border: 1px solid #E5E7EB; border-radius: 10px; padding: 0 16px; font-size: 14px; }
+            #SearchBar:focus { background-color: #ffffff; border: 2px solid #3B82F6; }
+            #NotificationButton { background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; font-size: 18px; }
+            #NotificationButton:hover { background-color: #EFF6FF; border: 1px solid #3B82F6; }
+            #ScrollArea { background-color: #F3F4F6; border: none; }
+            QScrollBar:vertical { background: #E5E7EB; width: 8px; border-radius: 4px; }
+            QScrollBar::handle:vertical { background: #9CA3AF; border-radius: 4px; }
+            QScrollBar::handle:vertical:hover { background: #6B7280; }
 
+            #WelcomeLabel { color: #111827; font-size: 26px; font-weight: 700; }
+            #DateLabel { color: #6B7280; font-size: 13px; }
+            #SectionTitle { color: #111827; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
 
-#LoginBrandAegis {
+            #CompactStatsBar { background-color: #ffffff; border-radius: 10px; border: 1px solid #E5E7EB; }
+            #CompactStatLabel { color: #6B7280; font-size: 13px; font-weight: 600; }
 
-    color: #ffffff;
-    font-size: 64px;
-    font-weight: 900;
-padding:0px;
-    letter-spacing: 16px;
-    font-family: "Rajdhani", "Orbitron", sans-serif;
-    text-transform: uppercase;
+            #MetricsBar { background-color: transparent; }
+            #MetricCard { background-color: #ffffff; border-radius: 10px; border: 1px solid #E5E7EB; }
+            #MetricIcon { font-size: 28px; }
+            #MetricValue { font-size: 22px; font-weight: 700; }
+            #MetricLabel { color: #6B7280; font-size: 12px; }
 
+            #EventChart { background-color: #1E293B; border: 1px solid #334155; border-radius: 10px; }
 
+            #ControlLabel { color: #374151; font-size: 14px; font-weight: 600; }
+            #LogSourceCombo { background-color: #ffffff; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; font-size: 14px; }
 
+            #LogTable { background-color: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; gridline-color: #E5E7EB; font-size: 12px; }
+            #LogTable::item { padding: 6px; border-bottom: 1px solid #F3F4F6; }
+            #LogTable::item:selected { background-color: #DBEAFE; color: #1F2937; }
+            QHeaderView::section { background-color: #F9FAFB; color: #374151; padding: 10px; border: none; border-bottom: 2px solid #E5E7EB; font-weight: 600; font-size: 12px; }
 
-}
-            #LoginTagline {padding-left: 150px;padding-right: 60px;   color: rgba(255, 255, 255, 0.8); font-size: 16px;  }
-            #LoginRightSide { background-color: #ffffff; }
-            #LoginWelcome { color: #111827; font-size: 32px; font-weight: bold; }
-            #LoginSubtitle { color: #6B7280; font-size: 16px; margin-top: 5px; }
-            #LoginLabel { color: #374151; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-            #LoginInput { background-color: #F9FAFB; color: #1F2937; border: 2px solid #E5E7EB; border-radius: 8px; padding: 0 16px; font-size: 14px; }
-            #LoginInput:focus { background-color: #ffffff; border: 2px solid #3B82F6; }
-            #PasswordContainer { background-color: transparent; }
-            #PasswordToggle { background-color: #F9FAFB; border: 2px solid #E5E7EB; border-left: none; border-top-right-radius: 8px; border-bottom-right-radius: 8px; font-size: 18px; }
-            #PasswordToggle:hover { background-color: #EFF6FF; }
-            #PasswordToggle:checked { background-color: #DBEAFE; }
-            #ErrorMessage { color: #EF4444; font-size: 13px; font-weight: 600; margin-top: 5px; }
-            #LoginButton { background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #2563eb, stop:1 #3b82f6); color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; }
-            #LoginButton:hover { background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1d4ed8, stop:1 #2563eb); }
-            #LoginButton:pressed { background: #1e40af; }
-            #LoginToggleText { color: #6B7280; font-size: 14px; }
-            #LoginToggleButton { background-color: transparent; color: #3B82F6; border: none; font-size: 14px; font-weight: 600; text-decoration: underline; }
-            #LoginToggleButton:hover { color: #2563eb; }
-            #LoginDemoInfo { color: #6B7280; font-size: 12px; background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 15px; }
+            #SettingsDialog { background-color: #ffffff; }
+            #DialogTitle { color: #111827; font-size: 24px; font-weight: 700; }
+            #SectionHeader { color: #374151; font-size: 16px; font-weight: 700; margin-top: 10px; }
+            #DialogLabel { color: #6B7280; font-size: 13px; font-weight: 600; }
+            #DialogValue { color: #111827; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+            #DialogInput { background-color: #F9FAFB; color: #1F2937; border: 2px solid #E5E7EB; border-radius: 6px; padding: 10px 12px; font-size: 14px; }
+            #DialogInput:focus { background-color: #ffffff; border: 2px solid #3B82F6; }
+            #DialogButton { background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #2563eb, stop:1 #3b82f6); color: #ffffff; border: none; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: 600; }
+            #DialogButton:hover { background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1d4ed8, stop:1 #2563eb); }
+            #DialogCloseButton { background-color: #F3F4F6; color: #374151; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: 600; }
+            #DialogCloseButton:hover { background-color: #E5E7EB; }
+            #DialogError { font-size: 13px; font-weight: 600; }
 
-
+            #CardWidget { background-color: #ffffff; border-radius: 12px; }
+            #CardWidget[hover="true"] { background-color: #F9FAFB; }
+            #CardIcon { color: #3B82F6; font-size: 28px; background-color: #EFF6FF; border-radius: 10px; padding: 8px; }
+            #CardStatus { color: #10B981; font-size: 11px; font-weight: 600; background-color: #D1FAE5; padding: 4px 10px; border-radius: 6px; }
+            #CardTitle { color: #1F2937; font-size: 16px; font-weight: 600; }
+            #CardDescription { color: #6B7280; font-size: 13px; line-height: 1.4; }
         )";
     }
 

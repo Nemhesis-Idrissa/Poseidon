@@ -10,21 +10,36 @@
 #include <QIcon>
 
 
+QString loadStyleSheet(const QString &path){
+    QFile file(path);
+    if(file.open(QFile::ReadOnly | QFile::Text)){
+        QTextStream stream(&file);
+        return stream.readAll();
+    }
+
+    return QString();
+}
+
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    QString styles;
+    styles += loadStyleSheet(":/styles/LoginPageStyle.qss");
+    styles += loadStyleSheet(":/styles/TopNavBarStyle.qss");
+    qApp->setStyleSheet(styles);
 
     Q_INIT_RESOURCE(resources);
     QIcon icon;
-    icon.addFile(":/images/AEGIS_LOGO.png", QSize(64,64));
 
-
-
+    QPixmap largePixmap(":/images/aegis.png");
+    QPixmap scaledPixmap = largePixmap.scaled(256, 256, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    icon.addPixmap(scaledPixmap);
     app.setWindowIcon(icon);
     QFont font("Segoe UI", 10);
     app.setFont(font);
 
-    QPixmap splashPixmap(":/images/AEGIS_LOGO.png");
+    QPixmap splashPixmap(":/images/aegis.png");
     QPixmap scaledSplash = splashPixmap.scaledToHeight(600, Qt::SmoothTransformation);
     QSplashScreen *splash= new QSplashScreen(scaledSplash);
 
@@ -73,8 +88,5 @@ int main(int argc, char *argv[])
 
     });
 
-
-
     return app.exec();
-
 }

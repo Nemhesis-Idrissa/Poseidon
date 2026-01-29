@@ -25,13 +25,16 @@ struct UserActivity {
     QDateTime timestamp;
     QString details;
 };
+
 class UserDatabase{
 public:
+    void resetDatabase();
     static UserDatabase& instance(void);
     bool authenticate(const QString& username, const QString& password);
     bool registerUser(const QString& username,
                     const QString& password,
                     const QString& email="");
+    bool passwordForgot();
     bool changePassword(const QString& username,
                         const QString& oldPassword,
                         const QString& newPassword);

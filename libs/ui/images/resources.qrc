@@ -1,7 +1,14 @@
 <!DOCTYPE RCC>
 <RCC version='1.0'>
-    <qresource prefix='/images'>
-        <file>AEGIS_LOGO.png</file>
-	<file>login_background.png</file> 
+    <qresource prefix='/'>
+        <file>../images/AEGIS_LOGO.png</file>
+	<file>../images/login_background.png</file> 
+	<file>../images/login_background_shield.png</file> 
+	<file>../images/hide.png</file>
+	<file>../images/show.png</file>
+	<file>../images/aegis.png</file>
+	<file>../styles/LoginPageStyle.qss</file> 
+	<file>../styles/TopNavBarStyle.qss</file> 
+
     </qresource>
 </RCC>

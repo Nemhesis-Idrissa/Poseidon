@@ -1,5 +1,5 @@
-#ifndef SEARCHPAGE_H
-#define SEARCHPAGE_H
+#ifndef REPORTSPAGE_H
+#define REPORTSPAGE_H
 
 #include <QApplication>
 #include <QWidget>
@@ -8,11 +8,10 @@
 #include <QLabel>
 #include <QPushButton>
 
-
-class Search : public QWidget{
+class Reports : public QWidget{
     Q_OBJECT;
 public:
-    Search() = default;
+    Reports() = default;
 };
 
 #endif

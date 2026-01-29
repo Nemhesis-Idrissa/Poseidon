@@ -1,0 +1,133 @@
+/* ========== TOP NAVIGATION BAR ========== */
+#TopNavBar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Logo */
+#Logo {
+    font-size: 32px;
+}
+
+#BrandName {
+    font-size: 22px;
+    font-weight: 900;
+    color: #2c2c2c;
+    letter-spacing: 2px;
+}
+
+/* Navigation Buttons */
+#NavButton {
+    background-color: transparent;
+    border: none;
+    color: #2c2c2c;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 0 24px;
+    text-align: left;
+}
+
+#NavButton:hover {
+    color: #000000;
+    background-color: #f8f8f8;
+}
+
+#NavButton:pressed {
+    background-color: #f0f0f0;
+}
+
+/* Active Navigation Button */
+#NavButtonActive {
+    background-color: #f0f0f0;
+    border: none;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 0 24px;
+    text-align: left;
+    border-bottom: 3px solid #9d8b6c;
+}
+
+/* Hide default menu indicator arrow */
+#NavButton::menu-indicator,
+#NavButtonActive::menu-indicator {
+    image: none;
+    width: 0px;
+}
+
+/* Dropdown Menu */
+QMenu#DropdownMenu {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 8px 0;
+}
+
+QMenu#DropdownMenu::item {
+    padding: 12px 24px;
+    color: #2c2c2c;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+QMenu#DropdownMenu::item:selected {
+    background-color: #f8f8f8;
+    color: #000000;
+}
+
+QMenu#DropdownMenu::separator {
+    height: 1px;
+    background-color: #e5e5e5;
+    margin: 8px 0;
+}
+
+/* Search Bar */
+#SearchBar {
+    background-color: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #2c2c2c;
+}
+
+#SearchBar:focus {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+#SearchBar::placeholder {
+    color: #999999;
+}
+
+/* Settings */
+#SettingsButton {
+    background-color: transparent;
+    border: 2px solid #2c2c2c;
+    border-radius: 22px;
+    color: #2c2c2c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+}
+
+#SettingsButton:hover {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 2px solid #2c2c2c;  /* Keep border on hover */
+}
+
+#SettingsButton:hover {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+
+#MainContent {
+    background-color: #fafafa;
+}
